@@ -1,20 +1,22 @@
 package com.hello.wacai.data2.dao;
 
-import com.hello.wacai.data2.dataobject.AccountingRecord;
-import java.util.List;
-
+import com.hello.wacai.data2.dataobject.MengxiaotongAccountingRecord;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 @Mapper
-public interface AccountingRecordMapper {
+public interface MengxiaotongAccountingRecordMapper {
     @Delete({
-        "delete from accounting_record",
+        "delete from mengxiaotong_accounting_record",
         "where id = #{id,jdbcType=VARCHAR}"
     })
     int deleteByPrimaryKey(String id);
 
     @Insert({
-        "insert into accounting_record (id, gmt_created, ",
+        "insert into mengxiaotong_accounting_record (id, gmt_created, ",
         "gmt_modified, from_user, ",
         "to_user, number, ",
         "message)",
@@ -23,12 +25,12 @@ public interface AccountingRecordMapper {
         "#{toUser,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, ",
         "#{message,jdbcType=VARCHAR})"
     })
-    int insert(AccountingRecord record);
+    int insert(MengxiaotongAccountingRecord record);
 
     @Select({
         "select",
         "id, gmt_created, gmt_modified, from_user, to_user, number, message",
-        "from accounting_record",
+        "from mengxiaotong_accounting_record",
         "where id = #{id,jdbcType=VARCHAR}"
     })
     @Results({
@@ -40,12 +42,12 @@ public interface AccountingRecordMapper {
         @Result(column="number", property="number", jdbcType=JdbcType.INTEGER),
         @Result(column="message", property="message", jdbcType=JdbcType.VARCHAR)
     })
-    AccountingRecord selectByPrimaryKey(String id);
+    MengxiaotongAccountingRecord selectByPrimaryKey(String id);
 
     @Select({
         "select",
         "id, gmt_created, gmt_modified, from_user, to_user, number, message",
-        "from accounting_record"
+        "from mengxiaotong_accounting_record"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.VARCHAR, id=true),
@@ -56,17 +58,17 @@ public interface AccountingRecordMapper {
         @Result(column="number", property="number", jdbcType=JdbcType.INTEGER),
         @Result(column="message", property="message", jdbcType=JdbcType.VARCHAR)
     })
-    List<AccountingRecord> selectAll();
+    List<MengxiaotongAccountingRecord> selectAll();
 
     @Update({
-        "update accounting_record",
+        "update mengxiaotong_accounting_record",
         "set,",
-          "now(),",
+          "gmt_modified = now(),",
           "from_user = #{fromUser,jdbcType=VARCHAR},",
           "to_user = #{toUser,jdbcType=VARCHAR},",
           "number = #{number,jdbcType=INTEGER},",
           "message = #{message,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=VARCHAR}"
     })
-    int updateByPrimaryKey(AccountingRecord record);
+    int updateByPrimaryKey(MengxiaotongAccountingRecord record);
 }

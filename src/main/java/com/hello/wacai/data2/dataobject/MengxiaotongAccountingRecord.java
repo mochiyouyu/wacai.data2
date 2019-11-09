@@ -4,9 +4,9 @@ import java.util.Date;
 
 /**
  * 
- * @date 2019/11/07
+ * @date 2019/11/09
  */
-public class AccountingRecord {
+public class MengxiaotongAccountingRecord {
     private String id;
 
     private Date gmtCreated;
