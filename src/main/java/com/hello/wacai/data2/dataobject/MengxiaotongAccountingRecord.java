@@ -4,10 +4,10 @@ import java.util.Date;
 
 /**
  * 
- * @date 2019/11/09
+ * @date 2019/11/10
  */
 public class MengxiaotongAccountingRecord {
-    private String id;
+    private Integer id;
 
     private Date gmtCreated;
 
@@ -21,11 +21,11 @@ public class MengxiaotongAccountingRecord {
 
     private String message;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
